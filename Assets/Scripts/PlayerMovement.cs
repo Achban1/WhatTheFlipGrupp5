@@ -1,8 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum PlayerID
+{
+    Player1,
+    Player2
+}
 
 public enum PlayerState
 {
@@ -13,15 +16,18 @@ public enum PlayerState
     Jump,
     Fall,
     Dead,
-    Attack,
+    Attack
 }
+
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player ID")]
+    public PlayerID playerID;
+
     [Header("Movement")]
     public float maxSpeed = 5;
     public float acceleration = 20;
     public float deacceleration = 4;
-
     internal float velocityX;
 
     [Header("Jump")]
@@ -29,21 +35,21 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckDistance = 0.01f;
 
     bool onGround = true;
-    float groundCheckLenght;
-    int maxJumps = 1;
+    float groundCheckLength;
+    int maxJumps = 2;
     int currentJumps = 0;
 
     Rigidbody2D rb2D;
     public PlayerState state = PlayerState.Idle;
 
-    private float attackDuration = 0.5f; // Adjust the duration of the attack animation
+    private float attackDuration = 0.5f;
 
     private void Start()
     {
         Physics2D.queriesStartInColliders = false;
         rb2D = GetComponent<Rigidbody2D>();
         var collider = GetComponent<Collider2D>();
-        groundCheckLenght = collider.bounds.size.y + groundCheckDistance;
+        groundCheckLength = collider.bounds.size.y + groundCheckDistance;
     }
 
     private void PlayerAttack()
@@ -51,82 +57,87 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             state = PlayerState.Attack;
-            Invoke("EndAttackState", attackDuration); // End attack state after attack duration
+            Invoke("EndAttackState", attackDuration);
         }
     }
 
     private void EndAttackState()
     {
-        // Check if the current state is still Attack before switching to Idle
         if (state == PlayerState.Attack)
         {
             state = PlayerState.Idle;
         }
     }
 
+    private float GetPlayerInputHorizontal()
+    {
+        switch (playerID)
+        {
+            case PlayerID.Player1:
+                return Input.GetKey(KeyCode.A) ? -1 : Input.GetKey(KeyCode.D) ? 1 : 0;
+            case PlayerID.Player2:
+                return Input.GetKey(KeyCode.LeftArrow) ? -1 : Input.GetKey(KeyCode.RightArrow) ? 1 : 0;
+            default:
+                return 0;
+        }
+    }
+
+    private bool GetPlayerJumpInputDown()
+    {
+        switch (playerID)
+        {
+            case PlayerID.Player1:
+                return Input.GetKeyDown(KeyCode.W);
+            case PlayerID.Player2:
+                return Input.GetKeyDown(KeyCode.UpArrow);
+            default:
+                return false;
+        }
+    }
+
+    private bool GetPlayerJumpInputReleased()
+    {
+        switch (playerID)
+        {
+            case PlayerID.Player1:
+                return Input.GetKeyUp(KeyCode.W);
+            case PlayerID.Player2:
+                return Input.GetKeyUp(KeyCode.UpArrow);
+            default:
+                return false;
+        }
+    }
+
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && currentJumps < maxJumps)
+        if (GetPlayerJumpInputDown() && currentJumps < maxJumps)
         {
             onGround = false;
             currentJumps++;
-            var velocity = rb2D.velocity;
-            velocity.y = jumpPower;
-            rb2D.velocity = velocity;
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpPower);
             state = PlayerState.Jump;
-            return;
         }
-
-        if (Input.GetButtonUp("Jump") && rb2D.velocity.y > 0)
+        else if (GetPlayerJumpInputReleased() && rb2D.velocity.y > 0)
         {
-            rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y * 0.25f);
+            rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y * 0.5f);
         }
 
-        onGround = Physics2D.Raycast(transform.position, Vector2.down, groundCheckLenght);
-
+        onGround = Physics2D.Raycast(transform.position, Vector2.down, groundCheckLength);
         if (onGround)
             currentJumps = 0;
     }
 
-    private void GravityAdjust()
-    {
-        if (rb2D.velocity.y < 0)
-            rb2D.gravityScale = 4;
-        else
-            rb2D.gravityScale = 1;
-    }
-
     private void HorizontalMovement()
     {
-        float x = Input.GetAxisRaw("Horizontal");
+        float x = GetPlayerInputHorizontal();
 
-        if (Input.GetKey(KeyCode.LeftControl) && onGround)
+        if (x == 0)
         {
-            maxSpeed = 0;
-            state = PlayerState.Crouch;
+            state = PlayerState.Idle;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        else
         {
-            maxSpeed = 5;
-        }
-
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            state = PlayerState.Crouch;
-
-            velocityX = x * maxSpeed;
-            rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
-        }
-        else if (onGround)
-        {
-            if (x == 0)
-            {
-                state = PlayerState.Idle;
-            }
-            else
-            {
-                state = PlayerState.Run;
-            }
+            state = PlayerState.Run;
         }
 
         velocityX += x * acceleration * Time.deltaTime;
@@ -140,11 +151,24 @@ public class PlayerMovement : MonoBehaviour
         rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerMovement otherPlayer = collision.gameObject.GetComponent<PlayerMovement>();
+            Vector2 collisionNormal = collision.contacts[0].normal;
+
+            Vector2 avgVelocity = (rb2D.velocity + otherPlayer.rb2D.velocity) * 0.5f;
+
+            otherPlayer.rb2D.velocity = avgVelocity.magnitude * -collisionNormal;
+            rb2D.velocity = avgVelocity.magnitude * collisionNormal;
+        }
+    }
+
     void Update()
     {
         HorizontalMovement();
         PlayerAttack();
         Jump();
-        GravityAdjust();
     }
 }
