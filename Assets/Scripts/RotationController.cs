@@ -19,7 +19,6 @@ public class RotationController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             targetRotation *= Quaternion.Euler(0, 0, 180);
-            //CameraShake.Instance.ShakeCamera(3f, 0.1f);
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
