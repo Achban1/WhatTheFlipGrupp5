@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PlayerID
@@ -107,7 +108,13 @@ public class PlayerMovement : MonoBehaviour
                 return false;
         }
     }
-
+    private void GravityAdjust()
+    {
+        if (rb2D.velocity.y < 0)
+            rb2D.gravityScale = 4;
+        else
+            rb2D.gravityScale = 1;
+    }
     private void Jump()
     {
         if (GetPlayerJumpInputDown() && currentJumps < maxJumps)
@@ -153,15 +160,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        PlayerMovement otherPlayer = collision.gameObject.GetComponent<PlayerMovement>();
+        if (otherPlayer)
         {
-            PlayerMovement otherPlayer = collision.gameObject.GetComponent<PlayerMovement>();
-            Vector2 collisionNormal = collision.contacts[0].normal;
+            if ((this.tag == "Player1" && collision.gameObject.tag == "Player2") ||
+                (this.tag == "Player2" && collision.gameObject.tag == "Player1"))
+            {
+                Debug.Log(gameObject.name + " collided with " + collision.gameObject.name);
 
-            Vector2 avgVelocity = (rb2D.velocity + otherPlayer.rb2D.velocity) * 0.5f;
-
-            otherPlayer.rb2D.velocity = avgVelocity.magnitude * -collisionNormal;
-            rb2D.velocity = avgVelocity.magnitude * collisionNormal;
+                // Give the other player double the current player's velocity
+                Vector2 newVelocity = rb2D.velocity * 2;
+                otherPlayer.rb2D.velocity = newVelocity;
+            }
         }
     }
 
@@ -170,5 +180,6 @@ public class PlayerMovement : MonoBehaviour
         HorizontalMovement();
         PlayerAttack();
         Jump();
+        GravityAdjust();
     }
 }
