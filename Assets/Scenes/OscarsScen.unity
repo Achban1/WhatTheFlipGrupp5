@@ -923,11 +923,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4518904578857741989, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7300038
+      value: -7.75
       objectReference: {fileID: 0}
     - target: {fileID: 4518904578857741989, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0134001
+      value: -3.27
       objectReference: {fileID: 0}
     - target: {fileID: 4518904578857741989, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -965,6 +965,10 @@ PrefabInstance:
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7744617110798939510, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7815068211958571501, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -972,6 +976,10 @@ PrefabInstance:
     - target: {fileID: 7815068211958571501, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
       propertyPath: m_TagString
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7873494227677009318, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
+      propertyPath: deacceleration
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -986,8 +994,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3137934066236335687, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
+      propertyPath: deacceleration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4123836702985885943, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
       propertyPath: m_Direction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383852889544889202, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
+      propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6452616856799437427, guid: f0aca577b482e44458db3b5d3138837d, type: 3}

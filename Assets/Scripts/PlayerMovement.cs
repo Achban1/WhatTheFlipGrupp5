@@ -45,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
 
     private float attackDuration = 0.5f;
 
+    bool isBouncing = false;
+
+    bool canMove = true;
+
     private void Start()
     {
         Physics2D.queriesStartInColliders = false;
@@ -157,27 +161,51 @@ public class PlayerMovement : MonoBehaviour
 
         rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         PlayerMovement otherPlayer = collision.gameObject.GetComponent<PlayerMovement>();
-        if (otherPlayer)
+        if (otherPlayer != null && !isBouncing)
         {
-            if ((this.tag == "Player1" && collision.gameObject.tag == "Player2") ||
-                (this.tag == "Player2" && collision.gameObject.tag == "Player1"))
-            {
-                Debug.Log(gameObject.name + " collided with " + collision.gameObject.name);
 
-                // Give the other player double the current player's velocity
-                Vector2 newVelocity = rb2D.velocity * 2;
-                otherPlayer.rb2D.velocity = newVelocity;
-            }
+            float bounce = 1f;
+
+            Vector2 bounceDirection = (this.rb2D.position - otherPlayer.rb2D.position).normalized;
+            Vector2 bounceForce = bounceDirection * bounce * Mathf.Abs(rb2D.velocity.magnitude);
+
+            rb2D.AddForce(bounceForce, ForceMode2D.Impulse);
+            otherPlayer.rb2D.AddForce(-bounceForce, ForceMode2D.Impulse); // Bounce the other player in the opposite direction
+
+            isBouncing = true;
+            Invoke("StopBounce", 0.3f);
+
+            DisableMovement();
+            otherPlayer.DisableMovement();
         }
     }
 
+    void DisableMovement()
+    {
+        canMove = false;
+        Invoke("EnableMovement", 0.5f);  // Enable movement after 0.5 seconds
+    }
+
+    void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    void StopBounce()
+    {
+        isBouncing = false;
+    }
+
+
     void Update()
     {
-        HorizontalMovement();
+        if (canMove)
+        {
+            HorizontalMovement();
+        }
         PlayerAttack();
         Jump();
         GravityAdjust();
