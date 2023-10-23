@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum PlayerID
+{
+    Player1,
+    Player2
+}
 
 public enum PlayerState
 {
@@ -77,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonUp("Jump") && rb2D.velocity.y > 0)
+        if (Input.GetButtonUp("JumpPlayer1") && rb2D.velocity.y > 0)
         {
             rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y * 0.25f);
         }
@@ -98,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HorizontalMovement()
     {
-        float x = Input.GetAxisRaw("Horizontal");
+        float x = Input.GetAxisRaw("HorizontalPlayer1");
 
         if (Input.GetKey(KeyCode.LeftControl) && onGround)
         {
