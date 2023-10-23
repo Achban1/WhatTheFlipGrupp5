@@ -17,7 +17,7 @@ public class SceneHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             changingScene = true;
             Invoke(nameof(ChangeSceneFalse), 2f);
