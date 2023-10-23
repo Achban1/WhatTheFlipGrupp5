@@ -22,6 +22,8 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance { get; private set; }
+
     [Header("Player ID")]
     public PlayerID playerID;
 
@@ -38,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     bool onGround = true;
     float groundCheckLength;
     int maxJumps = 2;
-    int currentJumps = 0;
+    static int currentJumps = 0;
 
     Rigidbody2D rb2D;
     public PlayerState state = PlayerState.Idle;
@@ -48,9 +50,11 @@ public class PlayerMovement : MonoBehaviour
     bool isBouncing = false;
 
     bool canMove = true;
+    bool canMoveAtAll = true;       //to turn off all movement when changing scene or flipping
 
     private void Start()
     {
+        Instance = this;
         Physics2D.queriesStartInColliders = false;
         rb2D = GetComponent<Rigidbody2D>();
         var collider = GetComponent<Collider2D>();
@@ -176,32 +180,50 @@ public class PlayerMovement : MonoBehaviour
             otherPlayer.rb2D.AddForce(-bounceForce, ForceMode2D.Impulse); // Bounce the other player in the opposite direction
 
             isBouncing = true;
-            Invoke("StopBounce", 0.3f);
+            Invoke(nameof(StopBounce), 0.3f);
 
             DisableMovement();
             otherPlayer.DisableMovement();
         }
     }
 
-    void DisableMovement()
+    public void DisableMovement()
     {
         canMove = false;
-        Invoke("EnableMovement", 0.5f);  // Enable movement after 0.5 seconds
+        Invoke(nameof(EnableMovement), 0.5f);  // Enable movement after 0.5 seconds
     }
 
     void EnableMovement()
     {
         canMove = true;
     }
+    //public void DisableAllMovement()
+    //{
+    //    canMoveAtAll = false;
+    //    for (int i = 0; i < 100; i++)
+    //    {
+    //        rb2D.gravityScale = 0f;
+    //    } 
+    //    Invoke(nameof(EnableAllMovement), 0.5f);  
+    //}
+    //void EnableAllMovement()
+    //{
+    //    rb2D.gravityScale = 1f;
+    //    canMoveAtAll = true; 
+    //}
 
     void StopBounce()
     {
         isBouncing = false;
     }
 
-
     void Update()
     {
+        //if (!canMoveAtAll)
+        //{
+        //    return; 
+        //}
+
         if (canMove)
         {
             HorizontalMovement();
