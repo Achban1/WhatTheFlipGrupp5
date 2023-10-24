@@ -36,9 +36,9 @@ public class HandMovement : MonoBehaviour
                 else
                 {
                     zValue1 *= 2;
-                    float clampedValue = Mathf.Clamp(zValue1, -1f, 1f);
-                    float zPos = Mathf.Lerp(min, max, (clampedValue + 1f) / 2f);
-                    transform.rotation = Quaternion.Euler(0, 0, zPos);
+                    float clampedValue1 = Mathf.Clamp(zValue1, -1f, 1f);
+                    float zPos1 = Mathf.Lerp(min, max, (clampedValue1 + 1f) / 2f);
+                    transform.rotation = Quaternion.Euler(0, 0, zPos1);
                     timer1 += Time.deltaTime;
                 }
                 return;
@@ -51,9 +51,9 @@ public class HandMovement : MonoBehaviour
                 else
                 {
                     zValue2 *= 2;
-                    float clampedValue = Mathf.Clamp(zValue1, -1f, 1f);
-                    float zPos = Mathf.Lerp(min, max, (clampedValue + 1f) / 2f);
-                    transform.rotation = Quaternion.Euler(0, 0, zPos);
+                    float clampedValue2 = Mathf.Clamp(zValue2, -1f, 1f);
+                    float zPos2 = Mathf.Lerp(min, max, (clampedValue2 + 1f) / 2f);
+                    transform.rotation = Quaternion.Euler(0, 0, zPos2);
                     timer2 += Time.deltaTime;
                 }
                 return;

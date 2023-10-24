@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathArea : MonoBehaviour
 {
     private SceneHandler sceneHandler;
+    public float sceneChangePaus = 0.5f;
 
     private void Start()
     {
@@ -33,7 +34,7 @@ public class DeathArea : MonoBehaviour
 
     IEnumerator ReloadScene()
     {
-        yield return new WaitForSeconds(3); // Wait for 3 seconds (adjust as needed)
+        yield return new WaitForSeconds(sceneChangePaus); // Wait for 3 seconds (adjust as needed)
 
         if (sceneHandler != null)
         {

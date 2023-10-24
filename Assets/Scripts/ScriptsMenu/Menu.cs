@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float volumeSlider;
     void Start()
     {
         
@@ -20,6 +20,20 @@ public class Menu : MonoBehaviour
     public void StartButton()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 2);
+    }
+
+    public void ControlsButton()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
+
+    public void VolumeSlider(float volume)
+    {
+        volumeSlider = volume*100f;
+        PlayerPrefs.SetFloat("volume", volumeSlider);
+    }
+
+
 }
