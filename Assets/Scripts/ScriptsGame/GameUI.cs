@@ -10,7 +10,7 @@ public class GameUI : MonoBehaviour
     public GameObject escSlider;
     void Start()
     {
-        escSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("volume", 100f);
+        //escSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("volume", 100f);
     }
 
     void Update()

@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpPower = 8;
     public float groundCheckDistance = 0.01f;
 
-    bool onGround = true;
+    public bool onGround = true;
     float groundCheckLength;
     int[] maxJumps = { 1, 1 }; // Array to hold maxJumps for Player1 and Player2
     int[] currentJumps = { 0, 0 }; // Array to hold currentJumps for Player1 and Player2
@@ -52,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
     bool canMove = true;
     bool canMoveAtAll = true;       //to turn off all movement when changing scene or flipping
 
+    CameraScript camerascript;
+
     private void Start()
     {
         Instance = this;
@@ -59,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         var collider = GetComponent<Collider2D>();
         groundCheckLength = collider.bounds.size.y + groundCheckDistance;
+
+        camerascript = Camera.main.GetComponent<CameraScript>();
     }
 
     private void PlayerAttack()
@@ -166,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
+        
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -186,6 +191,8 @@ public class PlayerMovement : MonoBehaviour
 
             DisableMovement();
             otherPlayer.DisableMovement();
+
+            camerascript.Shake();
         }
     }
 
@@ -232,6 +239,6 @@ public class PlayerMovement : MonoBehaviour
         }
         PlayerAttack();
         Jump();
-        GravityAdjust();
+        GravityAdjust();     
     }
 }
