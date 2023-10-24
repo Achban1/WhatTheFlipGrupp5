@@ -19,7 +19,7 @@ public class RotationController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             targetRotation *= Quaternion.Euler(0, 0, 180);
-            //PlayerMovement.Instance.DisableAllMovement();
+            PlayerMovement.Instance.DisableAllMovement();
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);

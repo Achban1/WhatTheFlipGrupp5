@@ -197,20 +197,19 @@ public class PlayerMovement : MonoBehaviour
     {
         canMove = true;
     }
-    //public void DisableAllMovement()
-    //{
-    //    canMoveAtAll = false;
-    //    for (int i = 0; i < 100; i++)
-    //    {
-    //        rb2D.gravityScale = 0f;
-    //    } 
-    //    Invoke(nameof(EnableAllMovement), 0.5f);  
-    //}
-    //void EnableAllMovement()
-    //{
-    //    rb2D.gravityScale = 1f;
-    //    canMoveAtAll = true; 
-    //}
+    public void DisableAllMovement()
+    {
+        canMoveAtAll = false;
+        rb2D.velocity = Vector2.zero;
+        rb2D.gravityScale = 0f;
+        Invoke(nameof(EnableAllMovement),0.5f);
+        //turnof colliders
+    }
+    void EnableAllMovement()
+    {
+        rb2D.gravityScale = 1f;
+        canMoveAtAll = true;
+    }
 
     void StopBounce()
     {
@@ -219,10 +218,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //if (!canMoveAtAll)
-        //{
-        //    return; 
-        //}
+        if (!canMoveAtAll)
+        {
+            return;
+        }
 
         if (canMove)
         {
