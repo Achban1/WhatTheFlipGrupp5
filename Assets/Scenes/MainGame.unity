@@ -428,6 +428,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 480
       objectReference: {fileID: 0}
+    - target: {fileID: 1719923957433571664, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719923957433571664, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.080822706
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719923957433571664, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719923957433571664, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294907136
+      objectReference: {fileID: 0}
     - target: {fileID: 4357064487861236411, guid: 012cbca1eecec004689471344c984e2d, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -491,6 +507,22 @@ PrefabInstance:
     - target: {fileID: 5405086203134374405, guid: 012cbca1eecec004689471344c984e2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092507695378552673, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092507695378552673, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092507695378552673, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092507695378552673, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
