@@ -39,8 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool onGround = true;
     float groundCheckLength;
-    int maxJumps = 1;
-    static int currentJumps = 0;
+    int[] maxJumps = { 1, 1 }; // Array to hold maxJumps for Player1 and Player2
+    int[] currentJumps = { 0, 0 }; // Array to hold currentJumps for Player1 and Player2
 
     Rigidbody2D rb2D;
     public PlayerState state = PlayerState.Idle;
@@ -125,10 +125,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        if (GetPlayerJumpInputDown() && currentJumps < maxJumps)
+        int playerIndex = (playerID == PlayerID.Player1) ? 0 : 1;
+
+        if (GetPlayerJumpInputDown() && currentJumps[playerIndex] < maxJumps[playerIndex])
         {
             onGround = false;
-            currentJumps++;
+            currentJumps[playerIndex]++;
             rb2D.velocity = new Vector2(rb2D.velocity.x, jumpPower);
             state = PlayerState.Jump;
         }
@@ -139,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
 
         onGround = Physics2D.Raycast(transform.position, Vector2.down, groundCheckLength);
         if (onGround)
-            currentJumps = 0;
+            currentJumps[playerIndex] = 0;
     }
 
     private void HorizontalMovement()
