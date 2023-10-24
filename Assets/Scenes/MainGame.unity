@@ -1617,6 +1617,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 395644302938124220, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123836702985885943, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
+      propertyPath: m_Size.y
+      value: 2.0016308
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123836702985885943, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0077047646
+      objectReference: {fileID: 0}
     - target: {fileID: 6452616856799437427, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.78
@@ -1656,6 +1668,14 @@ PrefabInstance:
     - target: {fileID: 6452616856799437427, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7152356730035687931, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c8885c2ef03b4314790ecbb4f49cc4c4, type: 2}
+    - target: {fileID: 8201609341629357303, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
+      propertyPath: skeletonDataAsset
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8885026466575621423, guid: f0aca577b482e44458db3b5d3138837d, type: 3}
       propertyPath: m_Name
@@ -1809,6 +1829,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435085598072240505, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066366421835135964, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
+      propertyPath: m_Size.y
+      value: 2.0008898
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066366421835135964, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
+      propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

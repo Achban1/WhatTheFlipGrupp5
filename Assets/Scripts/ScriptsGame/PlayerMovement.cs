@@ -198,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
     void EnableMovement()
     {
         canMove = true;
+        velocityX = rb2D.velocity.x;
     }
     public void DisableAllMovement()
     {
