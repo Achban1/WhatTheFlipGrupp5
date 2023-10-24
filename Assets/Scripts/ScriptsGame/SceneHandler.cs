@@ -18,9 +18,9 @@ public class SceneHandler : MonoBehaviour
     private void Start()
     {
         timer = 0f;
-        startPosition = new Vector3(0, 13, 0);
+        startPosition = new Vector3(0, 14, 0);
         centerPosition = new Vector3(0, 0, 0);
-        endPosition = new Vector3(0, -13, 0);
+        endPosition = new Vector3(0, -14, 0);
 
         transform.position = startPosition;
     }
@@ -42,7 +42,9 @@ public class SceneHandler : MonoBehaviour
     {
         if (openingThisScene)
         {
-            transform.position = Vector3.Lerp(startPosition, centerPosition, timer / lerpDuration);
+            float t = timer / lerpDuration;
+            float easedT = EaseInAndOut(0f, 1f, t*2);
+            transform.position = Vector3.Lerp(startPosition, centerPosition, easedT);
             timer += Time.deltaTime;
             if (transform.position == centerPosition)
             {
@@ -50,14 +52,24 @@ public class SceneHandler : MonoBehaviour
             }
         }
     }
+
     private void ChangeScene()
     {
         if (changingScene)
         {
-            transform.position = Vector3.Lerp(centerPosition, endPosition, timer / lerpDuration);
+            float t = timer / lerpDuration;
+            float easedT = EaseInAndOut(0f, 1f, t*2);
+            transform.position = Vector3.Lerp(centerPosition, endPosition, easedT);
             timer += Time.deltaTime;
         }
     }
+
+    private float EaseInAndOut(float edge0, float edge1, float x)
+    {
+        x = Mathf.Clamp01((x - edge0) / (edge1 - edge0)); // Clamping x to the range [0, 1]
+        return x * x *(3 - 2 * x);
+    }
+
     private void LoadNextScene()
     {
         int sceneCount = SceneManager.sceneCountInBuildSettings;
@@ -66,7 +78,7 @@ public class SceneHandler : MonoBehaviour
 
         do
         {
-            nextScene = Random.Range(1, sceneCount);
+            nextScene = Random.Range(2, sceneCount);
         } while (nextScene == currentSceneIndex);
 
         SceneManager.LoadScene(nextScene);
