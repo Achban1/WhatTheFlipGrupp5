@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     public GameObject bullet;
+    public GameObject hand;
     void Start()
     {
         
@@ -12,9 +13,10 @@ public class Fire : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Instantiate(bullet, transform.position, transform.rotation);
+            var newBullet = Instantiate(bullet, hand.transform.position, transform.rotation);
+            Destroy(newBullet, 3f);
         }
     }
 }

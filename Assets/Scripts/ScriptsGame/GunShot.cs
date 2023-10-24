@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PistolShooting : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Rigidbody2D rb2D;
+    float bulletSpeed = 10f;
     void Start()
     {
-        
+        rb2D = GetComponent<Rigidbody2D>();
+        rb2D.velocity = new Vector2(0, 1);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position += transform.up * bulletSpeed * Time.deltaTime;
     }
 }
