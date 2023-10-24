@@ -53,7 +53,7 @@ public class SceneHandler : MonoBehaviour
         }
     }
 
-    private void ChangeScene()
+    public void ChangeScene()
     {
         if (changingScene)
         {
@@ -70,7 +70,7 @@ public class SceneHandler : MonoBehaviour
         return x * x *(3 - 2 * x);
     }
 
-    private void LoadNextScene()
+    public void LoadNextScene()
     {
         int sceneCount = SceneManager.sceneCountInBuildSettings;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -83,5 +83,12 @@ public class SceneHandler : MonoBehaviour
 
         SceneManager.LoadScene(nextScene);
         changingScene = false;
+    }
+
+    public void SceneCallDeathArea()
+    {
+        changingScene = true;
+        timer = 0f;
+        Invoke(nameof(LoadNextScene), lerpDuration);
     }
 }

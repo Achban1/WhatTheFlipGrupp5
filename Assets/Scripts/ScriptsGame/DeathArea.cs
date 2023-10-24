@@ -5,6 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class DeathArea : MonoBehaviour
 {
+    private SceneHandler sceneHandler;
+
+    private void Start()
+    {
+        sceneHandler = FindObjectOfType<SceneHandler>();
+        if (sceneHandler == null)
+        {
+            Debug.LogError("No SceneHandler found in the scene!");
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player1") || collision.CompareTag("Player2"))
@@ -22,7 +33,11 @@ public class DeathArea : MonoBehaviour
 
     IEnumerator ReloadScene()
     {
-        yield return new WaitForSeconds(2); // Wait for 2 seconds (adjust as needed)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload current scene
+        yield return new WaitForSeconds(3); // Wait for 3 seconds (adjust as needed)
+
+        if (sceneHandler != null)
+        {
+            sceneHandler.SceneCallDeathArea(); // Call the SceneCallDeatArea method from the SceneHandler script
+        }
     }
 }
