@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool onGround = true;
     float groundCheckLength;
-    int maxJumps = 2;
+    int maxJumps = 1;
     static int currentJumps = 0;
 
     Rigidbody2D rb2D;
