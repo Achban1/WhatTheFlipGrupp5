@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     //start menu
-    public float musicSlider;
-    public float fxSlider;
+    //public float musicSlider;
+    //public float fxSlider;
+    public GameObject image;
     void Start()
     {
         
@@ -24,21 +25,24 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex + 2);
     }
 
-    public void ControlsButton()
+    public void Controls()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        image.SetActive(true);
+    }
+    public void ControlsQuit()
+    {
+        image.SetActive(false);
     }
 
-    public void MusicSlider(float volume)
-    {
-        musicSlider = volume*100f;
-        PlayerPrefs.SetFloat("musicvolume", musicSlider);
-    }
-    public void FxSlider(float volume)
-    {
-        fxSlider = volume * 100f;
-        PlayerPrefs.SetFloat("fxvolume", fxSlider);
-    }
-     
+    //public void MusicSlider(float volume)
+    //{
+    //    musicSlider = volume*100f;
+    //    PlayerPrefs.SetFloat("musicvolume", musicSlider);
+    //}
+    //public void FxSlider(float volume)
+    //{
+    //    fxSlider = volume * 100f;
+    //    PlayerPrefs.SetFloat("fxvolume", fxSlider);
+    //}
+
 }
