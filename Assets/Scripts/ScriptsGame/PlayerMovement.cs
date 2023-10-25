@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
             DisableMovement();
             otherPlayer.DisableMovement();
 
-            camerascript.Shake();
+            camerascript.Shake(0.1f);
         }
     }
 

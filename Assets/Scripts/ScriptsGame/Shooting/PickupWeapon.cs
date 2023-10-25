@@ -7,6 +7,7 @@ public class PickupWeapon : MonoBehaviour
     public GameObject hand;
     public GameObject[] weapons;
     private Fire fireScript;
+    public string[] weaponNames;
 
     void Start()
     {
@@ -22,6 +23,15 @@ public class PickupWeapon : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
+            if (other.gameObject.GetComponent<Rifle>() != null)
+            {
+                fireScript.PutWeaponInHand(0);
+            }
+            else if (other.gameObject.GetComponent<Bomb>() != null)
+            {
+                fireScript.PutWeaponInHand(1);
+            }
+
             string nameOfWeaponGameObject = other.gameObject.name;
 
             Debug.Log(nameOfWeaponGameObject);
@@ -29,12 +39,10 @@ public class PickupWeapon : MonoBehaviour
             {
                 if (weapon != null && weapon.name == nameOfWeaponGameObject)
                 {
-                    Transform childTransform = transform.GetChild(2);
                     
                     if (fireScript != null)
                     {
-                        Transform newParent = childTransform.GetChild(0);
-                        fireScript.PutWeaponInHand(nameOfWeaponGameObject);
+                        //fireScript.PutWeaponInHand(nameOfWeaponGameObject);
                     }
                 }
             }
