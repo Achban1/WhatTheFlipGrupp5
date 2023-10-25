@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool onGround = true;
     float groundCheckLength;
-    int[] maxJumps = { 1, 1 }; // Array to hold maxJumps for Player1 and Player2
+    int[] maxJumps = { 2, 2 }; // Array to hold maxJumps for Player1 and Player2
     int[] currentJumps = { 0, 0 }; // Array to hold currentJumps for Player1 and Player2
 
     Rigidbody2D rb2D;
