@@ -30,6 +30,11 @@ public class DeathArea : MonoBehaviour
             // Reload the scene after a small delay
             StartCoroutine(ReloadScene());
         }
+
+        else
+        {
+            return;
+        }
     }
 
     IEnumerator ReloadScene()
