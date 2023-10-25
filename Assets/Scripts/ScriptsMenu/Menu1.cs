@@ -8,10 +8,12 @@ public class Menu1 : MonoBehaviour
 {
     //esc menu
     PauseMenuEnabler enabler;
+    public GameObject controlsImage;
 
     private void Start()
     {
         enabler = GetComponent<PauseMenuEnabler>();
+        controlsImage.SetActive(false);
     }
  
     // Exits the game
@@ -24,11 +26,6 @@ public class Menu1 : MonoBehaviour
 #endif
     }
 
-    // Starts the game
-    public void StartGame()
-    {
-        SceneManager.LoadScene("MainGame");
-    }
     // Loads the Menu
     public void LoadMenu()
     {
@@ -38,5 +35,14 @@ public class Menu1 : MonoBehaviour
     public void Resume()
     {
         enabler.Resume();
+    }
+
+    public void Controls()
+    {
+        controlsImage.SetActive(true);
+    }
+    public void ControlsQuit()
+    {
+        controlsImage.SetActive(false);
     }
 }

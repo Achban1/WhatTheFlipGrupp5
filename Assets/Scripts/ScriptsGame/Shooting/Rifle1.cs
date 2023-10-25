@@ -38,9 +38,11 @@ public class Rifle : MonoBehaviour
 
     public void MoveRifle(Transform hand)
     {
+        
         if (theHand == null) 
         {
             theHand = hand;
+            Debug.Log("theHand assigned: " + theHand.name);
         }
         isPickedUp = true;
 
@@ -58,13 +60,11 @@ public class Rifle : MonoBehaviour
         //rb.velocity = Vector2.zero;
         //rb.gravityScale = 0f;
         Destroy(rb);
-
-
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             Vector2 bulletOffset = new Vector2(0, 0.68f);
             if (rifleDir.x > 0)
@@ -75,16 +75,6 @@ public class Rifle : MonoBehaviour
             {
                 Instantiate(rifleBullet, (Vector2)gunPoint.transform.position - bulletOffset, Quaternion.Euler(0, 0, 0));
             }
-
-
-            //Vector2 bulletOffset = new Vector2(0, -0.185f);
-            //Quaternion rightRotation = Quaternion.Euler(0, 0, -90);
-            //Quaternion leftRotation = Quaternion.Euler(0, 0, 90);
-            //Vector2 scale = new Vector2(transform.localScale.x, transform.localScale.y);
-            //var newBullet = Instantiate(rifleBullet, (Vector2)gunPoint.transform.position + bulletOffset, Quaternion.identity);
-            //newBullet.transform.localScale = scale;
-            //Debug.Log(player.rotation); 
-            //Destroy(newBullet, 3f);
         }
         if (isPickedUp && theHand != null)
         {

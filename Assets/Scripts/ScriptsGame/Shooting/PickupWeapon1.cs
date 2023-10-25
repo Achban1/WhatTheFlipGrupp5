@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class PickupWeapon : MonoBehaviour
 {
-    public GameObject[] weapons;
-    private Fire fireScript;
-
     private Rifle rifle;
     private Bomb bomb;
     private GrenadeWeapon grenade;
-    public string[] weaponNames;
 
     private Transform handController;
     private Transform theHand;
@@ -21,7 +17,6 @@ public class PickupWeapon : MonoBehaviour
         theHand = handController.transform.GetChild(0);
         Debug.Log(theHand.name);
 
-        fireScript = GameObject.FindObjectOfType<Fire>();
         rifle = GameObject.FindObjectOfType<Rifle>();
         bomb = GameObject.FindObjectOfType<Bomb>();
         grenade = GameObject.FindObjectOfType<GrenadeWeapon>();
@@ -29,6 +24,7 @@ public class PickupWeapon : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Rifle rifleScript = other.gameObject.GetComponent<Rifle>();
         if (other.gameObject.GetComponent<Rifle>() != null)
         {
             rifle.MoveRifle(theHand);
@@ -46,21 +42,7 @@ public class PickupWeapon : MonoBehaviour
         {
         }
 
-            //string nameOfWeaponGameObject = other.gameObject.name;
 
-            //Debug.Log(nameOfWeaponGameObject);
-            //foreach (GameObject weapon in weapons)
-            //{
-            //    if (weapon != null && weapon.name == nameOfWeaponGameObject)
-            //    {
-                    
-            //        if (fireScript != null)
-            //        {
-            //            //fireScript.PutWeaponInHand(nameOfWeaponGameObject);
-            //        }
-            //    }
-            //}
-            ////Destroy(other.gameObject);
-        }
     }
+}
 

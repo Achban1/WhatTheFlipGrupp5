@@ -42,11 +42,6 @@ public class RotationController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartFlip();
-            // PlayerMovement.Instance.DisableAllMovement(); // Uncomment if PlayerMovement is defined in your project
-        }
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
