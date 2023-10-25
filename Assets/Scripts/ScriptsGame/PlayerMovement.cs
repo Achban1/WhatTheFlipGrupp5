@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum PlayerID
@@ -47,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     CameraScript camerascript;
 
+    public new Transform transform;
+
     private void Start()
     {
         Instance = this;
@@ -56,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
         groundCheckLength = collider.bounds.size.y + groundCheckDistance;
 
         camerascript = Camera.main.GetComponent<CameraScript>();
+
+        transform = GetComponent<Transform>();
     }
 
     private float GetPlayerInputHorizontal()
@@ -146,8 +151,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
-        
+
+        // Change the player's orientation based on the direction of movement
+        if (velocityX > 0.1f)
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else if (velocityX < -0.1f)
+        {
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         PlayerMovement otherPlayer = collision.gameObject.GetComponent<PlayerMovement>();
