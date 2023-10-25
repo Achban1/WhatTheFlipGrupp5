@@ -7,16 +7,24 @@ public class PickupWeapon : MonoBehaviour
     public GameObject hand;
     public GameObject[] weapons;
     private Fire fireScript;
+
+    private Rifle rifle;
+    private Bomb bomb;
+    private GrenadeWeapon grenade;
     public string[] weaponNames;
+
+    private Transform handController;
+    private Transform theHand;
 
     void Start()
     {
+        handController = transform.GetChild(2);
+        theHand = handController.transform.GetChild(0);
+
         fireScript = GameObject.FindObjectOfType<Fire>();
-    }
-
-    void Update()
-    {
-
+        rifle = GameObject.FindObjectOfType<Rifle>();
+        bomb = GameObject.FindObjectOfType<Bomb>();
+        grenade = GameObject.FindObjectOfType<GrenadeWeapon>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -25,11 +33,10 @@ public class PickupWeapon : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Rifle>() != null)
             {
-                fireScript.PutWeaponInHand(0);
+                rifle.MoveRifle(theHand);
             }
             else if (other.gameObject.GetComponent<Bomb>() != null)
             {
-                fireScript.PutWeaponInHand(1);
             }
 
             string nameOfWeaponGameObject = other.gameObject.name;
@@ -46,7 +53,7 @@ public class PickupWeapon : MonoBehaviour
                     }
                 }
             }
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
     }
 }
