@@ -33,6 +33,14 @@ public class Menu : MonoBehaviour
     {
         image.SetActive(false);
     }
+    public void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
+    }
 
     //public void MusicSlider(float volume)
     //{
