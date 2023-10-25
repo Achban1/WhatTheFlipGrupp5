@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
         {
             onGround = false;
             currentJumps[playerIndex]++;
-            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpPower);
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpPower);         
             state = PlayerState.Jump;
         }
         else if (GetPlayerJumpInputReleased() && rb2D.velocity.y > 0)
@@ -133,13 +133,14 @@ public class PlayerMovement : MonoBehaviour
     {
         float x = GetPlayerInputHorizontal();
 
-        if (x == 0)
+        if (Mathf.Abs(velocityX) > 0.5f)
         {
-            state = PlayerState.Idle;
+            transform.localScale = new Vector3(Mathf.Sign(velocityX) * 0.5f, 0.5f, 0.5f);
+            state = PlayerState.Run;
         }
         else
         {
-            state = PlayerState.Run;
+            state = PlayerState.Idle;
         }
 
         velocityX += x * acceleration * Time.deltaTime;
