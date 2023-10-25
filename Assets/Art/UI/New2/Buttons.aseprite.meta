@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 02c2c760a33696b4c9691cb447d51383
+guid: 9853476d02f82ca47904ca913aa3ee43
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Pause_Menu
+  - name: Buttons
     originalName: 
-    pivot: {x: 0.5901639, y: -0.14864865}
+    pivot: {x: 0.5205479, y: -0.04054054}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 122
+      width: 73
       height: 148
-    spriteID: 84bc2949cd700044e820240a1e56163a
+    spriteID: 0a4c1fbdd538e324996c31752ad0655d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,27 +138,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 1, y: -99}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1696521734
-    name: Pause_Menu
+    guid: 2099246669
+    name: Buttons
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Pause_Menu
+    - name: Buttons
       frameIndex: 0
       cellRect:
-        x: 0
-        y: -81
-        width: 256
-        height: 256
-      spriteId: 84bc2949cd700044e820240a1e56163a
+        x: 12
+        y: 6
+        width: 73
+        height: 148
+      spriteId: 0a4c1fbdd538e324996c31752ad0655d
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 150, y: 175}
+  canvasSize: {x: 100, y: 160}

@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public Transform cameraTransform;
-    public float shakeDuration = 0.3f;
     public float shakeMagnitude = 0.2f;
 
     private Vector3 originalPosition;
@@ -18,9 +17,9 @@ public class CameraScript : MonoBehaviour
             cameraTransform = GetComponent<Transform>();
         originalPosition = transform.position;
     }
-    public void Shake()
+    public void Shake(float shakeDuration)
     {
-        InvokeRepeating("StartShaking", 0f, 0.01f);
+        InvokeRepeating("StartShaking()", 0f, 0.01f); //passa in magnitud här?
         Invoke("StopShaking", shakeDuration);
     }
 
