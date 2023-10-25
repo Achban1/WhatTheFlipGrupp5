@@ -9,8 +9,12 @@ public class RotationController : MonoBehaviour
     private Coroutine flipRoutine;
     public Image redImage;
 
+    CameraScript camerascript;
+
     void Start()
     {
+        camerascript = Camera.main.GetComponent<CameraScript>();
+
         GameObject redImageGO = GameObject.FindGameObjectWithTag("RedImage");
         if (redImageGO != null)
         {
@@ -49,7 +53,14 @@ public class RotationController : MonoBehaviour
     private void StartFlip()
     {
         targetRotation *= Quaternion.Euler(0, 0, 180);
+        Invoke(nameof(CameraShakeWithDelay), 0.5f);
     }
+
+    private void CameraShakeWithDelay()
+    {
+        camerascript.Shake(0.15f);
+    }
+    
 
     private IEnumerator RandomFlip()
     {

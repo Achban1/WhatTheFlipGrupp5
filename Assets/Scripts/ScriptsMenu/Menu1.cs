@@ -6,13 +6,13 @@ using Unity.VisualScripting;
 
 public class Menu1 : MonoBehaviour
 {
+    //esc menu
     PauseMenuEnabler enabler;
 
     private void Start()
     {
         enabler = GetComponent<PauseMenuEnabler>();
     }
-
  
     // Exits the game
     public void Exit()

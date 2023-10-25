@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public float volumeSlider;
+    //start menu
+    public float musicSlider;
+    public float fxSlider;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -29,11 +30,15 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
-    public void VolumeSlider(float volume)
+    public void MusicSlider(float volume)
     {
-        volumeSlider = volume*100f;
-        PlayerPrefs.SetFloat("volume", volumeSlider);
+        musicSlider = volume*100f;
+        PlayerPrefs.SetFloat("musicvolume", musicSlider);
     }
-
-
+    public void FxSlider(float volume)
+    {
+        fxSlider = volume * 100f;
+        PlayerPrefs.SetFloat("fxvolume", fxSlider);
+    }
+     
 }

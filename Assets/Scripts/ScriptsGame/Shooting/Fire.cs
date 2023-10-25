@@ -26,15 +26,14 @@ public class Fire : MonoBehaviour
         }
     }
 
-    public void PutWeaponInHand(string weaponName)
+    public void PutWeaponInHand(int weaponnumber)
     {
         foreach (GameObject weapon in weaponsArray)
-        {
-            if (weaponName == weapon.name)
+        { 
+            //weaponsArray[i].GetComponent
             {
                 Transform newParent = transform.GetChild(0);
-                GameObject newObject = Instantiate(weapon, newParent.position, newParent.rotation, newParent);
-                
+                GameObject newObject = Instantiate(weapon, newParent.position, newParent.rotation, newParent);              
             }
         }
     }
