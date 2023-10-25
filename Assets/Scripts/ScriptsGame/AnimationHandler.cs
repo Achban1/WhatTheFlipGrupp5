@@ -6,9 +6,9 @@ public class AnimationHandler : MonoBehaviour
     PlayerMovement playerController; //Ref to our movement script
 
     [SpineAnimation]
-    public string walk, idle, jump, Run; //Animation ref.
+    public string idle, jump, Run; //Animation ref.
 
-    SkeletonAnimation skeletonAnimation; //spine component ref.
+    public SkeletonAnimation skeletonAnimation; //spine component ref.
 
     // Start is called before the first frame update
     void Start()

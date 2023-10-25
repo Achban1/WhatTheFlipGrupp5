@@ -11,13 +11,8 @@ public enum PlayerID
 public enum PlayerState
 {
     Idle,
-    Walk,
     Run,
-    Crouch,
     Jump,
-    Fall,
-    Dead,
-    Attack
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -45,8 +40,6 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb2D;
     public PlayerState state = PlayerState.Idle;
 
-    private float attackDuration = 0.5f;
-
     bool isBouncing = false;
 
     bool canMove = true;
@@ -63,23 +56,6 @@ public class PlayerMovement : MonoBehaviour
         groundCheckLength = collider.bounds.size.y + groundCheckDistance;
 
         camerascript = Camera.main.GetComponent<CameraScript>();
-    }
-
-    private void PlayerAttack()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            state = PlayerState.Attack;
-            Invoke("EndAttackState", attackDuration);
-        }
-    }
-
-    private void EndAttackState()
-    {
-        if (state == PlayerState.Attack)
-        {
-            state = PlayerState.Idle;
-        }
     }
 
     private float GetPlayerInputHorizontal()
@@ -237,7 +213,6 @@ public class PlayerMovement : MonoBehaviour
         {
             HorizontalMovement();
         }
-        PlayerAttack();
         Jump();
         GravityAdjust();     
     }
