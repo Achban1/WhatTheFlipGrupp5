@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunPoint : MonoBehaviour
+public class RifleBullet : MonoBehaviour
 {
-    public Transform daHand;
+    float bulletSpeed = 18f;
     void Start()
     {
         
@@ -12,6 +12,6 @@ public class GunPoint : MonoBehaviour
 
     void Update()
     {
-        
+        transform.position += transform.right * bulletSpeed * Time.deltaTime;
     }
 }
