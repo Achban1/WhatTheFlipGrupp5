@@ -15,15 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/MainGame.unity
+    path: Assets/Scenes/LevelceMainGame.unity
     guid: a257ef66cb76b2542b7134add2be715f
   - enabled: 1
-    path: Assets/Scenes/LevelTwo.unity
+    path: Assets/Scenes/LevelCave.unity
     guid: 14052657afb30d14e881886ee3068649
   - enabled: 1
-    path: Assets/Scenes/LevelThree.unity
+    path: Assets/Scenes/LevelBlood.unity
     guid: 70ee16606a4233a479aa437431027441
   - enabled: 1
-    path: Assets/Scenes/LevelFour.unity
+    path: Assets/Scenes/LevelFire.unity
     guid: 3cea85005ac17ae45b0fbabeadb17984
   m_configObjects: {}
