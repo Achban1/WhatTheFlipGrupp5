@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  scoreManager: {fileID: 2181342593034306884, guid: 012cbca1eecec004689471344c984e2d, type: 3}
 --- !u!114 &3552301131475424475
 MonoBehaviour:
   m_ObjectHideFlags: 0
