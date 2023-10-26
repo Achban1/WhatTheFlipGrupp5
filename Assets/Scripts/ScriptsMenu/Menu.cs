@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
     //public float musicSlider;
     //public float fxSlider;
     public GameObject image;
+    public GameObject Logo;
     void Start()
     {
         
@@ -28,10 +29,12 @@ public class Menu : MonoBehaviour
     public void Controls()
     {
         image.SetActive(true);
+        Logo.SetActive(false);
     }
     public void ControlsQuit()
     {
         image.SetActive(false);
+        Logo.SetActive(true);
     }
     public void Exit()
     {

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 114638824}
   - component: {fileID: 114638823}
   m_Layer: 0
-  m_Name: Logo_2_0
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,12 +222,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114638822}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.9920137, z: 0}
-  m_LocalScale: {x: 28.38, y: 28.38, z: 28.38}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 304.3011, z: 0}
+  m_LocalScale: {x: 3051.613, y: 3051.613, z: 3051.613}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 821686912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163627634
 GameObject:
@@ -262,7 +262,7 @@ RectTransform:
   m_Father: {fileID: 1272797679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1306,9 +1306,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792556979}
-        m_TargetAssemblyTypeName: Menu1, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1792556980}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1391,6 +1391,7 @@ RectTransform:
   - {fileID: 807117375}
   - {fileID: 510925091}
   - {fileID: 1681182050}
+  - {fileID: 114638825}
   m_Father: {fileID: 277274221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1924,7 +1925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -225.15}
+  m_AnchoredPosition: {x: 0, y: -181.28}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681182051
@@ -2079,6 +2080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1681182049}
+  Logo: {fileID: 114638822}
 --- !u!4 &1792556981
 Transform:
   m_ObjectHideFlags: 0
@@ -2127,7 +2129,7 @@ RectTransform:
   m_Father: {fileID: 1927981916}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2439,4 +2441,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 1818120432}
   - {fileID: 571138550}
-  - {fileID: 114638825}
