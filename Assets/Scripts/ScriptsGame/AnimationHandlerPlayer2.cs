@@ -15,7 +15,7 @@ public class AnimationHandlerPlayer2 : MonoBehaviour
         skeletonAnimation = GetComponent<SkeletonAnimation>();
 
         var mySkeletonAnimation = GetComponent<SkeletonAnimation>();
-        mySkeletonAnimation.skeleton.SetColor(Color.blue);
+        //mySkeletonAnimation.skeleton.SetColor(Color.blue);
     }
 
     void Update()
