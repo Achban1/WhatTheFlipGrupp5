@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     float groundCheckLength;
     int[] maxJumps = { 2, 2 }; // Array to hold maxJumps for Player1 and Player2
     int[] currentJumps = { 0, 0 }; // Array to hold currentJumps for Player1 and Player2
+    private Vector2 lastFrameVelocity;
 
     Rigidbody2D rb2D;
     public PlayerState state = PlayerState.Idle;
@@ -53,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
 
     private AudioScriptPlay audioScriptPlayPlayer1Jump;
     private AudioScriptPlay audioScriptPlayPlayer2Jump;
+
+    public GameObject quickDash;
 
     private void Start()
     {
@@ -234,6 +237,34 @@ public class PlayerMovement : MonoBehaviour
         isBouncing = false;
     }
 
+    public void EnableQuickDash()
+    {
+        Invoke(nameof(ActivateQuickDash), 0f);  // Wait for half a second before calling ActivateQuickDash method
+    }
+
+    private void ActivateQuickDash()
+    {
+        //GameObject quickDash = GameObject.FindGameObjectWithTag("QuickDash");
+        if (quickDash != null)
+        {
+            quickDash.SetActive(true);
+            Invoke(nameof(DeactivateQuickDash), 0.2f);  // Wait for half a second before calling DeactivateQuickDash method
+        }
+        else
+        {
+            Debug.LogWarning("No GameObject found with the tag 'QuickDash'");
+        }
+    }
+
+    private void DeactivateQuickDash()
+    {
+        //GameObject quickDash = GameObject.FindGameObjectWithTag("QuickDash");
+        if (quickDash != null)
+        {
+            quickDash.SetActive(false);
+        }
+    }
+
     void Update()
     {
         if (!canMoveAtAll)
@@ -244,8 +275,31 @@ public class PlayerMovement : MonoBehaviour
         if (canMove)
         {
             HorizontalMovement();
+            CheckForQuickDash();
         }
         Jump();
         GravityAdjust();   
+    }
+
+    private void CheckForQuickDash()
+    {
+        // Check if player has velocity
+        float velocityThreshold = 0.5f;
+        bool hasVelocity = rb2D.velocity.magnitude > velocityThreshold;
+
+        // Check if player has turned
+        bool hasTurned = Mathf.Sign(rb2D.velocity.x) != Mathf.Sign(lastFrameVelocity.x) && rb2D.velocity.x != 0 && lastFrameVelocity.x != 0;
+
+        // Check if player is on ground
+        bool isOnGround = onGround;
+
+        // If all conditions are met, enable quick dash
+        if (hasVelocity && hasTurned && isOnGround)
+        {
+            EnableQuickDash();
+        }
+
+        // Update last frame velocity for the next frame
+        lastFrameVelocity = rb2D.velocity;
     }
 }

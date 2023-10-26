@@ -12,6 +12,7 @@ TagManager:
   - Player1AudioSourceGetShoot
   - Player2AudioSourceGetShoot
   - Player2AudioSourceJump
+  - QuickDash
   layers:
   - Default
   - TransparentFX
