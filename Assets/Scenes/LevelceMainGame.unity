@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f39db20bb15a149b2de1465956eb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theHand: {fileID: 0}
+  rifle: {fileID: 0}
 --- !u!4 &11644875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5435085598072240505, guid: 55ddcb5c83e37c14f8a1c2c6a16af6ff, type: 3}
@@ -396,6 +398,14 @@ PrefabInstance:
       value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 1719923957433571664, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_margin.w
+      value: -20.787605
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719923957433571664, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_margin.z
+      value: -155.90758
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719923957433571664, guid: 012cbca1eecec004689471344c984e2d, type: 3}
       propertyPath: m_fontColor.b
       value: 0.42352945
       objectReference: {fileID: 0}
@@ -562,6 +572,14 @@ PrefabInstance:
     - target: {fileID: 9092507695378552673, guid: 012cbca1eecec004689471344c984e2d, type: 3}
       propertyPath: m_fontSize
       value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092507695378552673, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_margin.w
+      value: -16.463303
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092507695378552673, guid: 012cbca1eecec004689471344c984e2d, type: 3}
+      propertyPath: m_margin.z
+      value: -146.23286
       objectReference: {fileID: 0}
     - target: {fileID: 9092507695378552673, guid: 012cbca1eecec004689471344c984e2d, type: 3}
       propertyPath: m_fontColor.b
