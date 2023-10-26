@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assault_Rifle_Ammo
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 06232915ebed1044daeba7d2a049db72, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 06232915ebed1044daeba7d2a049db72, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1169290963
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 06232915ebed1044daeba7d2a049db72, type: 3}
       propertyPath: m_LocalScale.x
       value: 4

@@ -12,7 +12,11 @@ TagManager:
   - Player1AudioSourceGetShoot
   - Player2AudioSourceGetShoot
   - Player2AudioSourceJump
+<<<<<<< Updated upstream
   - QuickDash
+=======
+  - Weapon2
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
