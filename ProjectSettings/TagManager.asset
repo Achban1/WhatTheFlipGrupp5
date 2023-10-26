@@ -12,6 +12,9 @@ TagManager:
   - Player1AudioSourceJump
   - Player1AudioSourceGetShoot
   - RedImage
+  - ScoreManager
+  - WinnerPlayer1
+  - WinnerPlayer2
   layers:
   - Default
   - TransparentFX
