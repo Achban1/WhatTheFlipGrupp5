@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelFire.unity
     guid: 3cea85005ac17ae45b0fbabeadb17984
+  - enabled: 1
+    path: Assets/Scenes/LevelSwamp.unity
+    guid: 15a53ee270ba9174fb96bda8acd5ecfb
+  - enabled: 1
+    path: Assets/Scenes/LevelGold.unity
+    guid: 7acee572c61b9404ebb6843e42118900
   m_configObjects: {}

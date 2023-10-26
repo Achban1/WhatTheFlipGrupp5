@@ -270,7 +270,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7747802952387537731}
   - component: {fileID: 8900331253223132038}
-  - component: {fileID: 3288216061765202898}
   m_Layer: 0
   m_Name: Rotator
   m_TagString: Untagged
@@ -312,19 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
---- !u!114 &3288216061765202898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2289332244184852608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d05c613ceece577498e86bb87330b2d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2000
+  redImage: {fileID: 0}
 --- !u!1 &7163607027683457678
 GameObject:
   m_ObjectHideFlags: 0
