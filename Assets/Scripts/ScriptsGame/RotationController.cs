@@ -68,7 +68,7 @@ public class RotationController : MonoBehaviour
 
             // Start flashing and wait for 2 seconds
             StartCoroutine(FlashRedImage());
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(0f); // it was 1.5
 
             // Then start the flip
             StartFlip();
@@ -82,7 +82,7 @@ public class RotationController : MonoBehaviour
             for (int i = 0; i < 3; i++) // Flash 3 times
             {
                 // Fade in
-                while (redImage.color.a < 1)
+                while (redImage.color.a < 0.5)
                 {
                     Color color = redImage.color;
                     color.a += 10f * Time.deltaTime; // Adjust speed if necessary

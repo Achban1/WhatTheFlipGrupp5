@@ -8,6 +8,10 @@ TagManager:
   - Player2
   - Weapon
   - RedImage
+  - Player1AudioSourceJump
+  - Player1AudioSourceGetShoot
+  - Player2AudioSourceGetShoot
+  - Player2AudioSourceJump
   layers:
   - Default
   - TransparentFX
@@ -59,4 +63,7 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 129386745
+    locked: 0
+  - name: Menues
+    uniqueID: 3507226643
     locked: 0

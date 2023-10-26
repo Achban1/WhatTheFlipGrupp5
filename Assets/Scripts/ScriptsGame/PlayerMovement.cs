@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
+
 public enum PlayerID
 {
     Player1,
@@ -50,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
 
     public new Transform transform;
 
+    private AudioScriptPlay audioScriptPlayPlayer1Jump;
+    private AudioScriptPlay audioScriptPlayPlayer2Jump;
+
     private void Start()
     {
         Instance = this;
@@ -61,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
         camerascript = Camera.main.GetComponent<CameraScript>();
 
         transform = GetComponent<Transform>();
+
+        audioScriptPlayPlayer1Jump = GameObject.FindGameObjectWithTag("Player1AudioSourceJump").GetComponent<AudioScriptPlay>();
+        audioScriptPlayPlayer2Jump = GameObject.FindGameObjectWithTag("Player2AudioSourceJump").GetComponent<AudioScriptPlay>();
     }
 
     private float GetPlayerInputHorizontal()
@@ -118,6 +125,15 @@ public class PlayerMovement : MonoBehaviour
             currentJumps[playerIndex]++;
             rb2D.velocity = new Vector2(rb2D.velocity.x, jumpPower);         
             state = PlayerState.Jump;
+
+            if (playerID == PlayerID.Player1)
+            {
+                audioScriptPlayPlayer1Jump.PlayAuido();
+            }
+            else if (playerID == PlayerID.Player2)
+            {
+                audioScriptPlayPlayer2Jump.PlayAuido();
+            }
         }
         else if (GetPlayerJumpInputReleased() && rb2D.velocity.y > 0)
         {
@@ -230,6 +246,6 @@ public class PlayerMovement : MonoBehaviour
             HorizontalMovement();
         }
         Jump();
-        GravityAdjust();     
+        GravityAdjust();   
     }
 }
