@@ -15,6 +15,8 @@ public class SceneHandler : MonoBehaviour
     private bool changingScene = false;
     private bool openingThisScene = true;
 
+    public ScoreManager scoreManager;
+
     private void Start()
     {
         timer = 0f;
@@ -87,8 +89,11 @@ public class SceneHandler : MonoBehaviour
 
     public void SceneCallDeathArea()
     {
-        changingScene = true;
-        timer = 0f;
-        Invoke(nameof(LoadNextScene), lerpDuration);
+        if (scoreManager.player1Score < scoreManager.winningScore && scoreManager.player2Score < scoreManager.winningScore)
+        {
+            changingScene = true;
+            timer = 0f;
+            Invoke(nameof(LoadNextScene), lerpDuration);
+        }
     }
 }
