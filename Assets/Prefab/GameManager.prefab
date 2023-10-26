@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2685884990322707249}
   - component: {fileID: 1458151266913987453}
-  - component: {fileID: 3818413588928975086}
   - component: {fileID: 3552301131475424475}
   - component: {fileID: 1100842232468396924}
   m_Layer: 0
@@ -49,20 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
---- !u!114 &3818413588928975086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343611704496951406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c5841fb3bccd34cb13749c0a2a3efb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  redImage: {fileID: 0}
 --- !u!114 &3552301131475424475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +61,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 3891365961071160334}
-  image: {fileID: 0}
 --- !u!114 &1100842232468396924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04773922526afa04daddcda1c5ac31bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlsImage: {fileID: 0}
 --- !u!1 &355098843977958071
 GameObject:
   m_ObjectHideFlags: 0
