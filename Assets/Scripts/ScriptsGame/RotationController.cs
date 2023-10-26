@@ -48,7 +48,7 @@ public class RotationController : MonoBehaviour
     private void StartFlip()
     {
         targetRotation *= Quaternion.Euler(0, 0, 180);
-        Invoke(nameof(CameraShakeWithDelay), 0.5f);
+        Invoke(nameof(CameraShakeWithDelay), 0f);
     }
 
     private void CameraShakeWithDelay()
