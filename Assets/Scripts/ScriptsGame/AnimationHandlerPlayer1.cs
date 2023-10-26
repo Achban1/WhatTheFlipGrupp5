@@ -1,3 +1,4 @@
+using Spine;
 using Spine.Unity;
 using UnityEngine;
 
@@ -8,10 +9,12 @@ public class AnimationHandlerPlayer1 : MonoBehaviour
     [SpineAnimation] public string idle, run, jump;
     public SkeletonAnimation skeletonAnimation;
 
+
     void Start()
     {
         playerController = transform.parent.GetComponent<PlayerMovement>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
+
     }
 
     void Update()

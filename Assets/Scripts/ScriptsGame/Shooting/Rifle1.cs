@@ -38,7 +38,10 @@ public class Rifle : MonoBehaviour
 
     public void MoveRifle(Transform hand)
     {
-        
+        if (isPickedUp)
+        {
+           // Desto
+        }
         if (theHand == null) 
         {
             theHand = hand;
@@ -70,6 +73,7 @@ public class Rifle : MonoBehaviour
             if (rifleDir.x > 0)
             {
                 Instantiate(rifleBullet, (Vector2)gunPoint.transform.position+bulletOffset, Quaternion.Euler(0, 0, 180));
+                Debug.Log("skjut");
             }
             if (rifleDir.x < 0)
             {

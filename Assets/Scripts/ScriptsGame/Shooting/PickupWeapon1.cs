@@ -24,14 +24,15 @@ public class PickupWeapon : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Rifle rifleScript = other.gameObject.GetComponent<Rifle>();
+     
         if (other.gameObject.GetComponent<Rifle>() != null)
         {
+
+            Rifle rifleScript = other.gameObject.GetComponent<Rifle>();
             rifle.MoveRifle(theHand);
             Vector2 rifleDirection = rifle.transform.right;
             Vector3 playerLocalScale = transform.localScale;
             float playerDir = playerLocalScale.x;
-            Debug.Log(rifleDirection + ", " + playerDir);
             if ((rifleDirection.x > 0 && playerDir < 0) || (rifleDirection.x < 0 && playerDir > 0))
             {
                 rifle.FlipRifle(rifleDirection);
